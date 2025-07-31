@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "acquisition_items",
+  "info": {
+    "singularName": "acquisition-item",
+    "pluralName": "acquisition-items",
+    "displayName": "AcquisitionItem"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "book": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::book.book"
+    },
+    "acquisition": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::acquisition.acquisition"
+    },
+    "Quantity": {
+      "type": "integer",
+      "required": true
+    },
+    "unitPrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "totalCost": {
+      "type": "decimal"
+    },
+    "Notes": {
+      "type": "text"
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "kind": "collectionType",
+  "collectionName": "books",
+  "info": {
+    "singularName": "book",
+    "pluralName": "books",
+    "displayName": "Book"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Subtitle": {
+      "type": "string"
+    },
+    "Author": {
+      "type": "string",
+      "required": true
+    },
+    "Publisher": {
+      "type": "string",
+      "required": true
+    },
+    "ISBN": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Languages": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "English",
+        "Hindi",
+        "Kannada"
+      ]
+    },
+    "Edition": {
+      "type": "string"
+    },
+    "publishedYear": {
+      "type": "integer",
+      "required": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::category.category",
+      "mappedBy": "books"
+    },
+    "Genre": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Fiction",
+        "Non-Fiction"
+      ]
+    },
+    "Format": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Hardcover",
+        "Paperback",
+        "eBook"
+      ]
+    },
+    "Pages": {
+      "type": "integer"
+    },
+    "Summary": {
+      "type": "blocks"
+    },
+    "coverImage": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "shelfLocation": {
+      "type": "string",
+      "required": true
+    },
+    "accessionNumber": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Barcode": {
+      "type": "string"
+    },
+    "bookStatus": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Available",
+        "Issued",
+        "Reserved",
+        "Lost",
+        "Damaged",
+        "Out of Stock"
+      ]
+    },
+    "numberOfCopies": {
+      "type": "integer",
+      "required": true
+    },
+    "availableCopies": {
+      "type": "integer",
+      "required": true
+    },
+    "addedAt": {
+      "type": "date",
+      "required": true
+    },
+    "Notes": {
+      "type": "text"
+    },
+    "tags": {
+      "type": "component",
+      "component": "shared.tag",
+      "repeatable": true
+    },
+    "acquisitions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::acquisition.acquisition",
+      "mappedBy": "book"
+    }
+  }
+}

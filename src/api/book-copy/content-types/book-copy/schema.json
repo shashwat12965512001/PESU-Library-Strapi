@@ -1,0 +1,62 @@
+{
+  "kind": "collectionType",
+  "collectionName": "book_copies",
+  "info": {
+    "singularName": "book-copy",
+    "pluralName": "book-copies",
+    "displayName": "BookCopy"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "accessionNumber": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Barcode": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "book": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::book.book"
+    },
+    "acquisition_item": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::acquisition-item.acquisition-item"
+    },
+    "bookStatus": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Available",
+        "Issued",
+        "Lost",
+        "Damaged",
+        "Reservered",
+        "Out of Stock"
+      ]
+    },
+    "shelfLocation": {
+      "type": "string",
+      "required": true
+    },
+    "Condition": {
+      "type": "enumeration",
+      "enum": [
+        "Good",
+        "Fair",
+        "Damaged"
+      ]
+    },
+    "Notes": {
+      "type": "text"
+    }
+  }
+}

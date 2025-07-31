@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "acquisitions",
+  "info": {
+    "singularName": "acquisition",
+    "pluralName": "acquisitions",
+    "displayName": "Acquisition"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "acquisitionDate": {
+      "type": "date",
+      "required": true
+    },
+    "invoiceNumber": {
+      "type": "string",
+      "required": true
+    },
+    "Quantity": {
+      "type": "integer",
+      "required": true
+    },
+    "unitPrice": {
+      "type": "decimal",
+      "required": true
+    },
+    "totalCost": {
+      "type": "decimal"
+    },
+    "fundingSource": {
+      "type": "enumeration",
+      "enum": [
+        "Department Fund",
+        "Grant",
+        "Library Budget"
+      ]
+    },
+    "Notes": {
+      "type": "text"
+    },
+    "book": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::book.book",
+      "inversedBy": "acquisitions"
+    }
+  }
+}
