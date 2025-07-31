@@ -484,6 +484,7 @@ export interface ApiBookCopyBookCopy extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Notes: Schema.Attribute.Text;
+    patron: Schema.Attribute.Relation<'manyToOne', 'api::patron.patron'>;
     publishedAt: Schema.Attribute.DateTime;
     shelfLocation: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -578,6 +579,73 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFineFine extends Struct.CollectionTypeSchema {
+  collectionName: 'fines';
+  info: {
+    displayName: 'Fine';
+    pluralName: 'fines';
+    singularName: 'fine';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    book: Schema.Attribute.Relation<'oneToOne', 'api::book.book'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fineAmount: Schema.Attribute.Decimal & Schema.Attribute.Required;
+    fineStatus: Schema.Attribute.Enumeration<['Pending', 'Paid']> &
+      Schema.Attribute.Required;
+    issuedBook: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::issued-book.issued-book'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::fine.fine'> &
+      Schema.Attribute.Private;
+    paidAt: Schema.Attribute.Date & Schema.Attribute.Required;
+    patron: Schema.Attribute.Relation<'oneToOne', 'api::patron.patron'>;
+    publishedAt: Schema.Attribute.DateTime;
+    Reason: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiIssuedBookIssuedBook extends Struct.CollectionTypeSchema {
+  collectionName: 'issued_books';
+  info: {
+    displayName: 'IssuedBook';
+    pluralName: 'issued-books';
+    singularName: 'issued-book';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    book: Schema.Attribute.Relation<'oneToOne', 'api::book.book'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dueDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    issuedAt: Schema.Attribute.Date & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::issued-book.issued-book'
+    > &
+      Schema.Attribute.Private;
+    patron: Schema.Attribute.Relation<'oneToOne', 'api::patron.patron'>;
+    publishedAt: Schema.Attribute.DateTime;
+    returnedAt: Schema.Attribute.Date;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1147,6 +1215,8 @@ declare module '@strapi/strapi' {
       'api::book-copy.book-copy': ApiBookCopyBookCopy;
       'api::book.book': ApiBookBook;
       'api::category.category': ApiCategoryCategory;
+      'api::fine.fine': ApiFineFine;
+      'api::issued-book.issued-book': ApiIssuedBookIssuedBook;
       'api::patron.patron': ApiPatronPatron;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

@@ -57,6 +57,11 @@
     },
     "Notes": {
       "type": "text"
+    },
+    "patron": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::patron.patron"
     }
   }
 }

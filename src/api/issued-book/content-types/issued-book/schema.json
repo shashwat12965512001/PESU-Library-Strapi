@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "issued_books",
+  "info": {
+    "singularName": "issued-book",
+    "pluralName": "issued-books",
+    "displayName": "IssuedBook"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "issuedAt": {
+      "type": "date",
+      "required": true
+    },
+    "dueDate": {
+      "type": "date",
+      "required": true
+    },
+    "returnedAt": {
+      "type": "date",
+      "required": false
+    },
+    "book": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::book.book"
+    },
+    "patron": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::patron.patron"
+    }
+  }
+}

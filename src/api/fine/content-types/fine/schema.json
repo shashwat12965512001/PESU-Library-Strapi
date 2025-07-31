@@ -1,0 +1,50 @@
+{
+  "kind": "collectionType",
+  "collectionName": "fines",
+  "info": {
+    "singularName": "fine",
+    "pluralName": "fines",
+    "displayName": "Fine"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "book": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::book.book"
+    },
+    "patron": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::patron.patron"
+    },
+    "fineAmount": {
+      "type": "decimal",
+      "required": true
+    },
+    "Reason": {
+      "type": "string",
+      "required": false
+    },
+    "fineStatus": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Pending",
+        "Paid"
+      ]
+    },
+    "paidAt": {
+      "type": "date",
+      "required": true
+    },
+    "issuedBook": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::issued-book.issued-book"
+    }
+  }
+}
