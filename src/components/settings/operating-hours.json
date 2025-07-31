@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_settings_operating_hours",
+  "info": {
+    "displayName": "Operating Hours",
+    "icon": "clock"
+  },
+  "options": {},
+  "attributes": {
+    "weekdayOpen": {
+      "type": "time"
+    },
+    "weekdayClose": {
+      "type": "time"
+    },
+    "weekendOpen": {
+      "type": "time"
+    },
+    "weekendClose": {
+      "type": "time"
+    },
+    "closedOnHolidays": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

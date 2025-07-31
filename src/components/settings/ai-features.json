@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_settings_ai_features",
+  "info": {
+    "displayName": "AI Features",
+    "icon": "alien"
+  },
+  "options": {},
+  "attributes": {
+    "autoCategorizeBooks": {
+      "type": "boolean"
+    },
+    "smartDueDatePredictions": {
+      "type": "boolean"
+    },
+    "chatbotEnabled": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

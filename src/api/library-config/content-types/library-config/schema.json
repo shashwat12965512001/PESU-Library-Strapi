@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "library_configs",
+  "info": {
+    "singularName": "library-config",
+    "pluralName": "library-configs",
+    "displayName": "LibraryConfig"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "branch": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::branch.branch"
+    },
+    "libraryInfo": {
+      "type": "component",
+      "component": "settings.library-info",
+      "repeatable": false
+    },
+    "userExperience": {
+      "type": "component",
+      "component": "settings.user-experience",
+      "repeatable": false
+    },
+    "Privacy": {
+      "type": "component",
+      "component": "settings.privacy",
+      "repeatable": false
+    },
+    "Preferences": {
+      "type": "component",
+      "component": "settings.preferences",
+      "repeatable": false
+    },
+    "operatingHours": {
+      "type": "component",
+      "component": "settings.operating-hours",
+      "repeatable": false
+    },
+    "Notifications": {
+      "type": "component",
+      "component": "settings.notifications",
+      "repeatable": false
+    },
+    "circulationPolicies": {
+      "type": "component",
+      "component": "settings.circulation-policies",
+      "repeatable": false
+    },
+    "AIFeatures": {
+      "type": "component",
+      "component": "settings.ai-features",
+      "repeatable": false
+    }
+  }
+}

@@ -46,6 +46,11 @@
       "relation": "manyToOne",
       "target": "api::book.book",
       "inversedBy": "acquisitions"
+    },
+    "branch": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::branch.branch"
     }
   }
 }

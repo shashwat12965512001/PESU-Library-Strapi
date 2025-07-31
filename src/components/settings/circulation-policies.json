@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_settings_circulation_policies",
+  "info": {
+    "displayName": "Circulation Policies",
+    "icon": "chartCircle"
+  },
+  "options": {},
+  "attributes": {
+    "allowRenewals": {
+      "type": "boolean"
+    },
+    "maxRenewalsPerBook": {
+      "type": "integer"
+    },
+    "gracePeriodDays": {
+      "type": "integer"
+    },
+    "restrictByCategory": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

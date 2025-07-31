@@ -423,6 +423,7 @@ export interface ApiAcquisitionAcquisition extends Struct.CollectionTypeSchema {
   attributes: {
     acquisitionDate: Schema.Attribute.Date & Schema.Attribute.Required;
     book: Schema.Attribute.Relation<'manyToOne', 'api::book.book'>;
+    branch: Schema.Attribute.Relation<'manyToOne', 'api::branch.branch'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -473,6 +474,7 @@ export interface ApiBookCopyBookCopy extends Struct.CollectionTypeSchema {
       ['Available', 'Issued', 'Lost', 'Damaged', 'Reservered', 'Out of Stock']
     > &
       Schema.Attribute.Required;
+    branch: Schema.Attribute.Relation<'manyToOne', 'api::branch.branch'>;
     Condition: Schema.Attribute.Enumeration<['Good', 'Fair', 'Damaged']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -550,6 +552,37 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
     Summary: Schema.Attribute.Blocks;
     tags: Schema.Attribute.Component<'shared.tag', true>;
     Title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiBranchBranch extends Struct.CollectionTypeSchema {
+  collectionName: 'branches';
+  info: {
+    displayName: 'Branch';
+    pluralName: 'branches';
+    singularName: 'branch';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    active: Schema.Attribute.Boolean & Schema.Attribute.Required;
+    Address: Schema.Attribute.String;
+    Code: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::branch.branch'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -652,6 +685,52 @@ export interface ApiIssuedBookIssuedBook extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiLibraryConfigLibraryConfig
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'library_configs';
+  info: {
+    displayName: 'LibraryConfig';
+    pluralName: 'library-configs';
+    singularName: 'library-config';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    AIFeatures: Schema.Attribute.Component<'settings.ai-features', false>;
+    branch: Schema.Attribute.Relation<'manyToOne', 'api::branch.branch'>;
+    circulationPolicies: Schema.Attribute.Component<
+      'settings.circulation-policies',
+      false
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    libraryInfo: Schema.Attribute.Component<'settings.library-info', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::library-config.library-config'
+    > &
+      Schema.Attribute.Private;
+    Notifications: Schema.Attribute.Component<'settings.notifications', false>;
+    operatingHours: Schema.Attribute.Component<
+      'settings.operating-hours',
+      false
+    >;
+    Preferences: Schema.Attribute.Component<'settings.preferences', false>;
+    Privacy: Schema.Attribute.Component<'settings.privacy', false>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userExperience: Schema.Attribute.Component<
+      'settings.user-experience',
+      false
+    >;
+  };
+}
+
 export interface ApiPatronPatron extends Struct.CollectionTypeSchema {
   collectionName: 'patrons';
   info: {
@@ -664,6 +743,7 @@ export interface ApiPatronPatron extends Struct.CollectionTypeSchema {
   };
   attributes: {
     Address: Schema.Attribute.Text;
+    branch: Schema.Attribute.Relation<'manyToOne', 'api::branch.branch'>;
     Course: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -701,6 +781,84 @@ export interface ApiPatronPatron extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiReservationReservation extends Struct.CollectionTypeSchema {
+  collectionName: 'reservations';
+  info: {
+    displayName: 'Reservation';
+    pluralName: 'reservations';
+    singularName: 'reservation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    book_copy: Schema.Attribute.Relation<
+      'oneToOne',
+      'api::book-copy.book-copy'
+    >;
+    branch: Schema.Attribute.Relation<'manyToOne', 'api::branch.branch'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    expiresAt: Schema.Attribute.Date;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::reservation.reservation'
+    > &
+      Schema.Attribute.Private;
+    notifiedAt: Schema.Attribute.Date;
+    patron: Schema.Attribute.Relation<'manyToOne', 'api::patron.patron'>;
+    priority: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    reservationStatus: Schema.Attribute.Enumeration<
+      ['Pending', 'Notified', 'Fulfilled', 'Cancelled']
+    > &
+      Schema.Attribute.Required;
+    reservedAt: Schema.Attribute.Date & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSerialIssueSerialIssue extends Struct.CollectionTypeSchema {
+  collectionName: 'serial_issues';
+  info: {
+    displayName: 'SerialIssue';
+    pluralName: 'serial-issues';
+    singularName: 'serial-issue';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    branch: Schema.Attribute.Relation<'manyToOne', 'api::branch.branch'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    issueNumber: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::serial-issue.serial-issue'
+    > &
+      Schema.Attribute.Private;
+    Notes: Schema.Attribute.Text;
+    publicationDate: Schema.Attribute.Date & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    receivedDate: Schema.Attribute.Date;
+    serial: Schema.Attribute.Relation<'manyToOne', 'api::serial.serial'>;
+    serialIssueStatus: Schema.Attribute.Enumeration<
+      ['Expected', 'Received', 'Missing']
+    > &
+      Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSerialSerial extends Struct.CollectionTypeSchema {
   collectionName: 'serials';
   info: {
@@ -712,9 +870,11 @@ export interface ApiSerialSerial extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    active: Schema.Attribute.Boolean & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Description: Schema.Attribute.Blocks;
     Frequency: Schema.Attribute.Enumeration<
       ['Daily', 'Weekly', 'Monthly', 'Quarterly']
     >;
@@ -727,6 +887,7 @@ export interface ApiSerialSerial extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     Publisher: Schema.Attribute.String & Schema.Attribute.Required;
+    startDate: Schema.Attribute.Date;
     Title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1247,10 +1408,14 @@ declare module '@strapi/strapi' {
       'api::acquisition.acquisition': ApiAcquisitionAcquisition;
       'api::book-copy.book-copy': ApiBookCopyBookCopy;
       'api::book.book': ApiBookBook;
+      'api::branch.branch': ApiBranchBranch;
       'api::category.category': ApiCategoryCategory;
       'api::fine.fine': ApiFineFine;
       'api::issued-book.issued-book': ApiIssuedBookIssuedBook;
+      'api::library-config.library-config': ApiLibraryConfigLibraryConfig;
       'api::patron.patron': ApiPatronPatron;
+      'api::reservation.reservation': ApiReservationReservation;
+      'api::serial-issue.serial-issue': ApiSerialIssueSerialIssue;
       'api::serial.serial': ApiSerialSerial;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

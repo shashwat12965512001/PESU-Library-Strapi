@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_settings_privacies",
+  "info": {
+    "displayName": "Privacy",
+    "icon": "key"
+  },
+  "options": {},
+  "attributes": {
+    "dataRetentionMonths": {
+      "type": "integer"
+    },
+    "shareWithVendors": {
+      "type": "boolean"
+    },
+    "allowDataExport": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

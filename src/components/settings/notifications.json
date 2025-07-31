@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_settings_notifications",
+  "info": {
+    "displayName": "Notifications",
+    "icon": "bell"
+  },
+  "options": {},
+  "attributes": {
+    "enableReminders": {
+      "type": "boolean"
+    },
+    "enableDueAlerts": {
+      "type": "boolean"
+    },
+    "enableEmail": {
+      "type": "boolean"
+    },
+    "enableSMS": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_settings_preferences",
+  "info": {
+    "displayName": "Preferences",
+    "icon": "cog"
+  },
+  "options": {},
+  "attributes": {
+    "maxBooksPerUser": {
+      "type": "integer"
+    },
+    "loanPeriodDays": {
+      "type": "integer"
+    },
+    "finePerDay": {
+      "type": "integer"
+    },
+    "Language": {
+      "type": "string"
+    },
+    "currency": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

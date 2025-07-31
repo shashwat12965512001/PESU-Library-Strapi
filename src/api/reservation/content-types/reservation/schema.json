@@ -1,0 +1,53 @@
+{
+  "kind": "collectionType",
+  "collectionName": "reservations",
+  "info": {
+    "singularName": "reservation",
+    "pluralName": "reservations",
+    "displayName": "Reservation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "book_copy": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::book-copy.book-copy"
+    },
+    "reservationStatus": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Pending",
+        "Notified",
+        "Fulfilled",
+        "Cancelled"
+      ]
+    },
+    "reservedAt": {
+      "type": "date",
+      "required": true
+    },
+    "notifiedAt": {
+      "type": "date"
+    },
+    "expiresAt": {
+      "type": "date"
+    },
+    "priority": {
+      "type": "integer"
+    },
+    "patron": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::patron.patron"
+    },
+    "branch": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::branch.branch"
+    }
+  }
+}

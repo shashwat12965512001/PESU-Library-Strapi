@@ -1,0 +1,32 @@
+{
+  "collectionName": "components_settings_library_infos",
+  "info": {
+    "displayName": "Library Info",
+    "icon": "information"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Code": {
+      "type": "string"
+    },
+    "Address": {
+      "type": "text"
+    },
+    "contactEmail": {
+      "type": "email"
+    },
+    "Phone": {
+      "type": "string"
+    },
+    "Website": {
+      "type": "string"
+    },
+    "establishedYear": {
+      "type": "integer"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "serial_issues",
+  "info": {
+    "singularName": "serial-issue",
+    "pluralName": "serial-issues",
+    "displayName": "SerialIssue"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "issueNumber": {
+      "type": "string",
+      "required": true
+    },
+    "publicationDate": {
+      "type": "date",
+      "required": true
+    },
+    "receivedDate": {
+      "type": "date"
+    },
+    "serialIssueStatus": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "Expected",
+        "Received",
+        "Missing"
+      ]
+    },
+    "Notes": {
+      "type": "text"
+    },
+    "serial": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::serial.serial"
+    },
+    "branch": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::branch.branch"
+    }
+  }
+}

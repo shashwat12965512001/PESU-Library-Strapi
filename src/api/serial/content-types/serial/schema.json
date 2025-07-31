@@ -31,6 +31,16 @@
         "Monthly",
         "Quarterly"
       ]
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "active": {
+      "type": "boolean",
+      "required": true
+    },
+    "Description": {
+      "type": "blocks"
     }
   }
 }
