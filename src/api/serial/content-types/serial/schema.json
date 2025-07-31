@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "serials",
+  "info": {
+    "singularName": "serial",
+    "pluralName": "serials",
+    "displayName": "Serial"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string",
+      "required": true
+    },
+    "Publisher": {
+      "type": "string",
+      "required": true
+    },
+    "ISSN": {
+      "type": "string",
+      "required": true
+    },
+    "Frequency": {
+      "type": "enumeration",
+      "enum": [
+        "Daily",
+        "Weekly",
+        "Monthly",
+        "Quarterly"
+      ]
+    }
+  }
+}

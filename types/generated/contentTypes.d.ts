@@ -701,6 +701,39 @@ export interface ApiPatronPatron extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSerialSerial extends Struct.CollectionTypeSchema {
+  collectionName: 'serials';
+  info: {
+    displayName: 'Serial';
+    pluralName: 'serials';
+    singularName: 'serial';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Frequency: Schema.Attribute.Enumeration<
+      ['Daily', 'Weekly', 'Monthly', 'Quarterly']
+    >;
+    ISSN: Schema.Attribute.String & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::serial.serial'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    Publisher: Schema.Attribute.String & Schema.Attribute.Required;
+    Title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -1218,6 +1251,7 @@ declare module '@strapi/strapi' {
       'api::fine.fine': ApiFineFine;
       'api::issued-book.issued-book': ApiIssuedBookIssuedBook;
       'api::patron.patron': ApiPatronPatron;
+      'api::serial.serial': ApiSerialSerial;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
