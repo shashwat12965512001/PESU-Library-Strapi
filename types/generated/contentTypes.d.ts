@@ -763,7 +763,8 @@ export interface ApiPatronPatron extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     Name: Schema.Attribute.String & Schema.Attribute.Required;
     patronStatus: Schema.Attribute.Enumeration<['Active', 'Blocked']> &
-      Schema.Attribute.Required;
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Active'>;
     Phone: Schema.Attribute.String & Schema.Attribute.Required;
     profile: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
@@ -889,6 +890,76 @@ export interface ApiSerialSerial extends Struct.CollectionTypeSchema {
     Publisher: Schema.Attribute.String & Schema.Attribute.Required;
     startDate: Schema.Attribute.Date;
     Title: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSummarySummary extends Struct.CollectionTypeSchema {
+  collectionName: 'summaries';
+  info: {
+    displayName: 'Summary';
+    pluralName: 'summaries';
+    singularName: 'summary';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    branch: Schema.Attribute.Relation<'manyToOne', 'api::branch.branch'>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Data: Schema.Attribute.JSON;
+    generatedAt: Schema.Attribute.DateTime;
+    generatedBy: Schema.Attribute.Relation<'manyToOne', 'api::patron.patron'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::summary.summary'
+    > &
+      Schema.Attribute.Private;
+    Notes: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    reportDate: Schema.Attribute.Date;
+    reportType: Schema.Attribute.Enumeration<['Daily', 'Monthly', 'Yearly']>;
+    Title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiUserActivityLogUserActivityLog
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'user_activity_logs';
+  info: {
+    displayName: 'UserActivityLog';
+    pluralName: 'user-activity-logs';
+    singularName: 'user-activity-log';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Action: Schema.Attribute.Enumeration<
+      ['login', 'book-issued', 'book-returned', 'fine-paid']
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    Description: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::user-activity-log.user-activity-log'
+    > &
+      Schema.Attribute.Private;
+    patron: Schema.Attribute.Relation<'manyToOne', 'api::patron.patron'>;
+    publishedAt: Schema.Attribute.DateTime;
+    Role: Schema.Attribute.String;
+    timestamp: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1417,6 +1488,8 @@ declare module '@strapi/strapi' {
       'api::reservation.reservation': ApiReservationReservation;
       'api::serial-issue.serial-issue': ApiSerialIssueSerialIssue;
       'api::serial.serial': ApiSerialSerial;
+      'api::summary.summary': ApiSummarySummary;
+      'api::user-activity-log.user-activity-log': ApiUserActivityLogUserActivityLog;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

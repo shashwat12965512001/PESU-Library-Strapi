@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_activity_logs",
+  "info": {
+    "singularName": "user-activity-log",
+    "pluralName": "user-activity-logs",
+    "displayName": "UserActivityLog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "patron": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::patron.patron"
+    },
+    "Role": {
+      "type": "string"
+    },
+    "Action": {
+      "type": "enumeration",
+      "enum": [
+        "login",
+        "book-issued",
+        "book-returned",
+        "fine-paid"
+      ]
+    },
+    "Description": {
+      "type": "text"
+    },
+    "timestamp": {
+      "type": "datetime"
+    }
+  }
+}

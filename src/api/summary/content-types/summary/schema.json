@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "summaries",
+  "info": {
+    "singularName": "summary",
+    "pluralName": "summaries",
+    "displayName": "Summary"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "reportType": {
+      "type": "enumeration",
+      "enum": [
+        "Daily",
+        "Monthly",
+        "Yearly"
+      ]
+    },
+    "reportDate": {
+      "type": "date"
+    },
+    "Data": {
+      "type": "json"
+    },
+    "generatedAt": {
+      "type": "datetime"
+    },
+    "Notes": {
+      "type": "text"
+    },
+    "generatedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::patron.patron"
+    },
+    "branch": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::branch.branch"
+    }
+  }
+}
