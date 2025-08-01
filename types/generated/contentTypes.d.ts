@@ -685,8 +685,7 @@ export interface ApiIssuedBookIssuedBook extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiLibraryConfigLibraryConfig
-  extends Struct.CollectionTypeSchema {
+export interface ApiLibraryConfigLibraryConfig extends Struct.SingleTypeSchema {
   collectionName: 'library_configs';
   info: {
     displayName: 'LibraryConfig';
@@ -697,7 +696,7 @@ export interface ApiLibraryConfigLibraryConfig
     draftAndPublish: true;
   };
   attributes: {
-    AIFeatures: Schema.Attribute.Component<'settings.ai-features', false>;
+    aiFeatures: Schema.Attribute.Component<'settings.ai-features', false>;
     branch: Schema.Attribute.Relation<'manyToOne', 'api::branch.branch'>;
     circulationPolicies: Schema.Attribute.Component<
       'settings.circulation-policies',
@@ -713,13 +712,13 @@ export interface ApiLibraryConfigLibraryConfig
       'api::library-config.library-config'
     > &
       Schema.Attribute.Private;
-    Notifications: Schema.Attribute.Component<'settings.notifications', false>;
+    notifications: Schema.Attribute.Component<'settings.notifications', false>;
     operatingHours: Schema.Attribute.Component<
       'settings.operating-hours',
       false
     >;
-    Preferences: Schema.Attribute.Component<'settings.preferences', false>;
-    Privacy: Schema.Attribute.Component<'settings.privacy', false>;
+    preferences: Schema.Attribute.Component<'settings.preferences', false>;
+    privacy: Schema.Attribute.Component<'settings.privacy', false>;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

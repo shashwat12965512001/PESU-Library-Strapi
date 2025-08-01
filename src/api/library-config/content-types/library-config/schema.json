@@ -1,5 +1,5 @@
 {
-  "kind": "collectionType",
+  "kind": "singleType",
   "collectionName": "library_configs",
   "info": {
     "singularName": "library-config",
@@ -18,43 +18,43 @@
     },
     "libraryInfo": {
       "type": "component",
-      "component": "settings.library-info",
-      "repeatable": false
+      "repeatable": false,
+      "component": "settings.library-info"
     },
     "userExperience": {
       "type": "component",
-      "component": "settings.user-experience",
-      "repeatable": false
+      "repeatable": false,
+      "component": "settings.user-experience"
     },
-    "Privacy": {
+    "privacy": {
       "type": "component",
-      "component": "settings.privacy",
-      "repeatable": false
+      "repeatable": false,
+      "component": "settings.privacy"
     },
-    "Preferences": {
+    "preferences": {
       "type": "component",
-      "component": "settings.preferences",
-      "repeatable": false
+      "repeatable": false,
+      "component": "settings.preferences"
     },
     "operatingHours": {
       "type": "component",
-      "component": "settings.operating-hours",
-      "repeatable": false
+      "repeatable": false,
+      "component": "settings.operating-hours"
     },
-    "Notifications": {
+    "notifications": {
       "type": "component",
-      "component": "settings.notifications",
-      "repeatable": false
+      "repeatable": false,
+      "component": "settings.notifications"
     },
     "circulationPolicies": {
       "type": "component",
-      "component": "settings.circulation-policies",
-      "repeatable": false
+      "repeatable": false,
+      "component": "settings.circulation-policies"
     },
-    "AIFeatures": {
+    "aiFeatures": {
       "type": "component",
-      "component": "settings.ai-features",
-      "repeatable": false
+      "repeatable": false,
+      "component": "settings.ai-features"
     }
   }
 }
