@@ -536,7 +536,7 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
     ISBN: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    Languages: Schema.Attribute.Enumeration<['English', 'Hindi', 'Kannada']> &
+    Language: Schema.Attribute.Enumeration<['English', 'Hindi', 'Kannada']> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::book.book'> &
