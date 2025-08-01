@@ -1,0 +1,12 @@
+{
+    "collectionName": "roles_custom",
+    "info": {
+        "singularName": "role",
+        "pluralName": "roles",
+        "displayName": "Role"
+    },
+    "options": {
+        "draftAndPublish": false
+    },
+    "attributes": {}
+}

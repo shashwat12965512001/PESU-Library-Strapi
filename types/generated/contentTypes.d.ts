@@ -822,6 +822,30 @@ export interface ApiReservationReservation extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiRoleRole extends Struct.CollectionTypeSchema {
+  collectionName: 'roles_custom';
+  info: {
+    displayName: 'Role';
+    pluralName: 'roles';
+    singularName: 'role';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::role.role'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSerialIssueSerialIssue extends Struct.CollectionTypeSchema {
   collectionName: 'serial_issues';
   info: {
@@ -1485,6 +1509,7 @@ declare module '@strapi/strapi' {
       'api::library-config.library-config': ApiLibraryConfigLibraryConfig;
       'api::patron.patron': ApiPatronPatron;
       'api::reservation.reservation': ApiReservationReservation;
+      'api::role.role': ApiRoleRole;
       'api::serial-issue.serial-issue': ApiSerialIssueSerialIssue;
       'api::serial.serial': ApiSerialSerial;
       'api::summary.summary': ApiSummarySummary;
