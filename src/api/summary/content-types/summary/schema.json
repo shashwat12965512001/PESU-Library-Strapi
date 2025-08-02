@@ -11,7 +11,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string"
     },
     "reportType": {
@@ -25,13 +25,13 @@
     "reportDate": {
       "type": "date"
     },
-    "Data": {
+    "data": {
       "type": "json"
     },
     "generatedAt": {
       "type": "datetime"
     },
-    "Notes": {
+    "notes": {
       "type": "text"
     },
     "generatedBy": {

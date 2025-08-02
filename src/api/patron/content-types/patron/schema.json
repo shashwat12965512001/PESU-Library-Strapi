@@ -11,11 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Name": {
+    "name": {
       "type": "string",
       "required": true
     },
-    "Email": {
+    "email": {
       "type": "email",
       "required": true,
       "unique": true
@@ -25,11 +25,11 @@
       "required": true,
       "unique": true
     },
-    "Phone": {
+    "phone": {
       "type": "string",
       "required": true
     },
-    "Role": {
+    "role": {
       "type": "enumeration",
       "required": true,
       "enum": [
@@ -39,7 +39,7 @@
         "Guest"
       ]
     },
-    "Department": {
+    "department": {
       "type": "enumeration",
       "required": true,
       "enum": [
@@ -48,14 +48,14 @@
         "MBA"
       ]
     },
-    "Course": {
+    "course": {
       "type": "string",
       "required": true
     },
     "year": {
       "type": "integer"
     },
-    "Gender": {
+    "gender": {
       "type": "enumeration",
       "enum": [
         "Male",
@@ -67,7 +67,7 @@
       "type": "date",
       "required": true
     },
-    "Address": {
+    "address": {
       "type": "text"
     },
     "patronStatus": {

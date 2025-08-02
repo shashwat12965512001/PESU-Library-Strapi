@@ -11,27 +11,27 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "Subtitle": {
+    "subtitle": {
       "type": "string"
     },
-    "Author": {
+    "author": {
       "type": "string",
       "required": true
     },
-    "Publisher": {
+    "publisher": {
       "type": "string",
       "required": true
     },
-    "ISBN": {
+    "isbn": {
       "type": "string",
       "required": true,
       "unique": true
     },
-    "Language": {
+    "language": {
       "type": "enumeration",
       "required": true,
       "enum": [
@@ -40,7 +40,7 @@
         "Kannada"
       ]
     },
-    "Edition": {
+    "edition": {
       "type": "string"
     },
     "publishedYear": {
@@ -53,7 +53,7 @@
       "target": "api::category.category",
       "mappedBy": "books"
     },
-    "Genre": {
+    "genre": {
       "type": "enumeration",
       "required": true,
       "enum": [
@@ -61,7 +61,7 @@
         "Non-Fiction"
       ]
     },
-    "Format": {
+    "format": {
       "type": "enumeration",
       "required": true,
       "enum": [
@@ -70,10 +70,10 @@
         "eBook"
       ]
     },
-    "Pages": {
+    "pages": {
       "type": "integer"
     },
-    "Summary": {
+    "summary": {
       "type": "blocks"
     },
     "coverImage": {
@@ -95,7 +95,7 @@
       "required": true,
       "unique": true
     },
-    "Barcode": {
+    "barcode": {
       "type": "string"
     },
     "bookStatus": {
@@ -122,7 +122,7 @@
       "type": "date",
       "required": true
     },
-    "Notes": {
+    "notes": {
       "type": "text"
     },
     "tags": {

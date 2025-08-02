@@ -399,9 +399,9 @@ export interface ApiAcquisitionItemAcquisitionItem
       'api::acquisition-item.acquisition-item'
     > &
       Schema.Attribute.Private;
-    Notes: Schema.Attribute.Text;
+    notes: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
-    Quantity: Schema.Attribute.Integer & Schema.Attribute.Required;
+    quantity: Schema.Attribute.Integer & Schema.Attribute.Required;
     totalCost: Schema.Attribute.Decimal;
     unitPrice: Schema.Attribute.Decimal & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -437,9 +437,9 @@ export interface ApiAcquisitionAcquisition extends Struct.CollectionTypeSchema {
       'api::acquisition.acquisition'
     > &
       Schema.Attribute.Private;
-    Notes: Schema.Attribute.Text;
+    notes: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
-    Quantity: Schema.Attribute.Integer & Schema.Attribute.Required;
+    quantity: Schema.Attribute.Integer & Schema.Attribute.Required;
     totalCost: Schema.Attribute.Decimal;
     unitPrice: Schema.Attribute.Decimal & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
@@ -462,11 +462,11 @@ export interface ApiBookCopyBookCopy extends Struct.CollectionTypeSchema {
     accessionNumber: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    acquisition_item: Schema.Attribute.Relation<
+    acquisitionItem: Schema.Attribute.Relation<
       'oneToOne',
       'api::acquisition-item.acquisition-item'
     >;
-    Barcode: Schema.Attribute.String &
+    barcode: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
     book: Schema.Attribute.Relation<'oneToOne', 'api::book.book'>;
@@ -475,7 +475,7 @@ export interface ApiBookCopyBookCopy extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Required;
     branch: Schema.Attribute.Relation<'manyToOne', 'api::branch.branch'>;
-    Condition: Schema.Attribute.Enumeration<['Good', 'Fair', 'Damaged']>;
+    condition: Schema.Attribute.Enumeration<['Good', 'Fair', 'Damaged']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -485,7 +485,7 @@ export interface ApiBookCopyBookCopy extends Struct.CollectionTypeSchema {
       'api::book-copy.book-copy'
     > &
       Schema.Attribute.Private;
-    Notes: Schema.Attribute.Text;
+    notes: Schema.Attribute.Text;
     patron: Schema.Attribute.Relation<'manyToOne', 'api::patron.patron'>;
     publishedAt: Schema.Attribute.DateTime;
     shelfLocation: Schema.Attribute.String & Schema.Attribute.Required;
@@ -514,9 +514,9 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
       'api::acquisition.acquisition'
     >;
     addedAt: Schema.Attribute.Date & Schema.Attribute.Required;
-    Author: Schema.Attribute.String & Schema.Attribute.Required;
+    author: Schema.Attribute.String & Schema.Attribute.Required;
     availableCopies: Schema.Attribute.Integer & Schema.Attribute.Required;
-    Barcode: Schema.Attribute.String;
+    barcode: Schema.Attribute.String;
     bookStatus: Schema.Attribute.Enumeration<
       ['Available', 'Issued', 'Reserved', 'Lost', 'Damaged', 'Out of Stock']
     > &
@@ -528,30 +528,30 @@ export interface ApiBookBook extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Edition: Schema.Attribute.String;
-    Format: Schema.Attribute.Enumeration<['Hardcover', 'Paperback', 'eBook']> &
+    edition: Schema.Attribute.String;
+    format: Schema.Attribute.Enumeration<['Hardcover', 'Paperback', 'eBook']> &
       Schema.Attribute.Required;
-    Genre: Schema.Attribute.Enumeration<['Fiction', 'Non-Fiction']> &
+    genre: Schema.Attribute.Enumeration<['Fiction', 'Non-Fiction']> &
       Schema.Attribute.Required;
-    ISBN: Schema.Attribute.String &
+    isbn: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    Language: Schema.Attribute.Enumeration<['English', 'Hindi', 'Kannada']> &
+    language: Schema.Attribute.Enumeration<['English', 'Hindi', 'Kannada']> &
       Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::book.book'> &
       Schema.Attribute.Private;
-    Notes: Schema.Attribute.Text;
+    notes: Schema.Attribute.Text;
     numberOfCopies: Schema.Attribute.Integer & Schema.Attribute.Required;
-    Pages: Schema.Attribute.Integer;
+    pages: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     publishedYear: Schema.Attribute.Integer & Schema.Attribute.Required;
-    Publisher: Schema.Attribute.String & Schema.Attribute.Required;
+    publisher: Schema.Attribute.String & Schema.Attribute.Required;
     shelfLocation: Schema.Attribute.String & Schema.Attribute.Required;
-    Subtitle: Schema.Attribute.String;
-    Summary: Schema.Attribute.Blocks;
+    subtitle: Schema.Attribute.String;
+    summary: Schema.Attribute.Blocks;
     tags: Schema.Attribute.Component<'shared.tag', true>;
-    Title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -570,8 +570,8 @@ export interface ApiBranchBranch extends Struct.CollectionTypeSchema {
   };
   attributes: {
     active: Schema.Attribute.Boolean & Schema.Attribute.Required;
-    Address: Schema.Attribute.String;
-    Code: Schema.Attribute.String & Schema.Attribute.Required;
+    address: Schema.Attribute.String;
+    code: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -581,7 +581,7 @@ export interface ApiBranchBranch extends Struct.CollectionTypeSchema {
       'api::branch.branch'
     > &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -610,7 +610,7 @@ export interface ApiCategoryCategory extends Struct.CollectionTypeSchema {
       'api::category.category'
     > &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -646,7 +646,7 @@ export interface ApiFineFine extends Struct.CollectionTypeSchema {
     paidAt: Schema.Attribute.Date & Schema.Attribute.Required;
     patron: Schema.Attribute.Relation<'oneToOne', 'api::patron.patron'>;
     publishedAt: Schema.Attribute.DateTime;
-    Reason: Schema.Attribute.String;
+    reason: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -741,33 +741,33 @@ export interface ApiPatronPatron extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    Address: Schema.Attribute.Text;
+    address: Schema.Attribute.Text;
     branch: Schema.Attribute.Relation<'manyToOne', 'api::branch.branch'>;
-    Course: Schema.Attribute.String & Schema.Attribute.Required;
+    course: Schema.Attribute.String & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     dateOfRegistration: Schema.Attribute.Date & Schema.Attribute.Required;
-    Department: Schema.Attribute.Enumeration<['CSE', 'ECE', 'MBA']> &
+    department: Schema.Attribute.Enumeration<['CSE', 'ECE', 'MBA']> &
       Schema.Attribute.Required;
-    Email: Schema.Attribute.Email &
+    email: Schema.Attribute.Email &
       Schema.Attribute.Required &
       Schema.Attribute.Unique;
-    Gender: Schema.Attribute.Enumeration<['Male', 'Female', 'Other']>;
+    gender: Schema.Attribute.Enumeration<['Male', 'Female', 'Other']>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::patron.patron'
     > &
       Schema.Attribute.Private;
-    Name: Schema.Attribute.String & Schema.Attribute.Required;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
     patronStatus: Schema.Attribute.Enumeration<['Active', 'Blocked']> &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'Active'>;
-    Phone: Schema.Attribute.String & Schema.Attribute.Required;
+    phone: Schema.Attribute.String & Schema.Attribute.Required;
     profile: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     publishedAt: Schema.Attribute.DateTime;
-    Role: Schema.Attribute.Enumeration<
+    role: Schema.Attribute.Enumeration<
       ['Student', 'Faculty', 'Staff', 'Guest']
     > &
       Schema.Attribute.Required;
@@ -792,10 +792,7 @@ export interface ApiReservationReservation extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    book_copy: Schema.Attribute.Relation<
-      'oneToOne',
-      'api::book-copy.book-copy'
-    >;
+    bookCopy: Schema.Attribute.Relation<'oneToOne', 'api::book-copy.book-copy'>;
     branch: Schema.Attribute.Relation<'manyToOne', 'api::branch.branch'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -898,11 +895,11 @@ export interface ApiSerialSerial extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Blocks;
-    Frequency: Schema.Attribute.Enumeration<
+    description: Schema.Attribute.Blocks;
+    frequency: Schema.Attribute.Enumeration<
       ['Daily', 'Weekly', 'Monthly', 'Quarterly']
     >;
-    ISSN: Schema.Attribute.String & Schema.Attribute.Required;
+    issn: Schema.Attribute.String & Schema.Attribute.Required;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -910,9 +907,9 @@ export interface ApiSerialSerial extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    Publisher: Schema.Attribute.String & Schema.Attribute.Required;
+    publisher: Schema.Attribute.String & Schema.Attribute.Required;
     startDate: Schema.Attribute.Date;
-    Title: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -934,7 +931,7 @@ export interface ApiSummarySummary extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Data: Schema.Attribute.JSON;
+    data: Schema.Attribute.JSON;
     generatedAt: Schema.Attribute.DateTime;
     generatedBy: Schema.Attribute.Relation<'manyToOne', 'api::patron.patron'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -943,11 +940,11 @@ export interface ApiSummarySummary extends Struct.CollectionTypeSchema {
       'api::summary.summary'
     > &
       Schema.Attribute.Private;
-    Notes: Schema.Attribute.Text;
+    notes: Schema.Attribute.Text;
     publishedAt: Schema.Attribute.DateTime;
     reportDate: Schema.Attribute.Date;
     reportType: Schema.Attribute.Enumeration<['Daily', 'Monthly', 'Yearly']>;
-    Title: Schema.Attribute.String;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -966,13 +963,13 @@ export interface ApiUserActivityLogUserActivityLog
     draftAndPublish: true;
   };
   attributes: {
-    Action: Schema.Attribute.Enumeration<
+    action: Schema.Attribute.Enumeration<
       ['login', 'book-issued', 'book-returned', 'fine-paid']
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    Description: Schema.Attribute.Text;
+    description: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -981,7 +978,7 @@ export interface ApiUserActivityLogUserActivityLog
       Schema.Attribute.Private;
     patron: Schema.Attribute.Relation<'manyToOne', 'api::patron.patron'>;
     publishedAt: Schema.Attribute.DateTime;
-    Role: Schema.Attribute.String;
+    role: Schema.Attribute.String;
     timestamp: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

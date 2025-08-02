@@ -11,19 +11,19 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Title": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "Publisher": {
+    "publisher": {
       "type": "string",
       "required": true
     },
-    "ISSN": {
+    "issn": {
       "type": "string",
       "required": true
     },
-    "Frequency": {
+    "frequency": {
       "type": "enumeration",
       "enum": [
         "Daily",
@@ -39,7 +39,7 @@
       "type": "boolean",
       "required": true
     },
-    "Description": {
+    "description": {
       "type": "blocks"
     }
   }

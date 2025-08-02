@@ -16,7 +16,7 @@
       "required": true,
       "unique": true
     },
-    "Barcode": {
+    "barcode": {
       "type": "string",
       "required": true,
       "unique": true
@@ -26,7 +26,7 @@
       "relation": "oneToOne",
       "target": "api::book.book"
     },
-    "acquisition_item": {
+    "acquisitionItem": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::acquisition-item.acquisition-item"
@@ -47,7 +47,7 @@
       "type": "string",
       "required": true
     },
-    "Condition": {
+    "condition": {
       "type": "enumeration",
       "enum": [
         "Good",
@@ -55,7 +55,7 @@
         "Damaged"
       ]
     },
-    "Notes": {
+    "notes": {
       "type": "text"
     },
     "patron": {

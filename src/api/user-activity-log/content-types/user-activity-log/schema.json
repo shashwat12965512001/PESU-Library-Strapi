@@ -16,10 +16,10 @@
       "relation": "manyToOne",
       "target": "api::patron.patron"
     },
-    "Role": {
+    "role": {
       "type": "string"
     },
-    "Action": {
+    "action": {
       "type": "enumeration",
       "enum": [
         "login",
@@ -28,7 +28,7 @@
         "fine-paid"
       ]
     },
-    "Description": {
+    "description": {
       "type": "text"
     },
     "timestamp": {

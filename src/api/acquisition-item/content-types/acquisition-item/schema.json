@@ -21,7 +21,7 @@
       "relation": "oneToOne",
       "target": "api::acquisition.acquisition"
     },
-    "Quantity": {
+    "quantity": {
       "type": "integer",
       "required": true
     },
@@ -32,7 +32,7 @@
     "totalCost": {
       "type": "decimal"
     },
-    "Notes": {
+    "notes": {
       "type": "text"
     }
   }

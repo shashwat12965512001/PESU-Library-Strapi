@@ -11,7 +11,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "book_copy": {
+    "bookCopy": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::book-copy.book-copy"
